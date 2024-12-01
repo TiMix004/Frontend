@@ -1,0 +1,12 @@
+<div>
+    <h1>Items</h1>
+    <ul>
+      <li *ngFor="let item of items">{{ item.name }}: {{ item.description }}</li>
+    </ul>
+
+    <form (submit)="addItem()">
+      <input [(ngModel)]="newItem.name" placeholder="Name" [ngModelOptions]="{standalone: true}"/>
+      <input [(ngModel)]="newItem.description" placeholder="Description" [ngModelOptions]="{standalone: true}"/>
+      <button type="submit">Add Item</button>
+    </form>
+  </div>
