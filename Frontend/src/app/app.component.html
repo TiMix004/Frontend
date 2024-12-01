@@ -1,12 +1,13 @@
-<div>
-    <h1>Items</h1>
-    <ul>
-      <li *ngFor="let item of items">{{ item.name }}: {{ item.description }}</li>
-    </ul>
+<div class="grp-app__sign-up-container">
+    <h1>Sign up</h1>
 
-    <form (submit)="addItem()">
-      <input [(ngModel)]="newItem.name" placeholder="Name" [ngModelOptions]="{standalone: true}"/>
-      <input [(ngModel)]="newItem.description" placeholder="Description" [ngModelOptions]="{standalone: true}"/>
+    <form class="grp-app__sign-up-form" (submit)="addUser()">
+      <input [(ngModel)]="this.newUser.firstname" placeholder="Enter your firstname" [ngModelOptions]="{standalone: true}" maxlength="20"/>
+      <input [(ngModel)]="this.newUser.lastname" placeholder="Enter your lastname" [ngModelOptions]="{standalone: true}" maxlength="50"/>
+      <input [(ngModel)]="this.newUser.date_of_birth" placeholder="YYYY-MM-DD" input-mask="YYYY-MM-DD" [ngModelOptions]="{standalone: true}" maxlength="10"/>
+      <input [(ngModel)]="this.newUser.username" placeholder="Enter a username" [ngModelOptions]="{standalone: true}" maxlength="20"/>
+      <input [(ngModel)]="this.newUser.email" placeholder="Enter your email" [ngModelOptions]="{standalone: true}" maxlength="20"/>
+      <input [(ngModel)]="this.newUser.password" placeholder="Enter a password" [ngModelOptions]="{standalone: true}" maxlength="20"/>
       <button type="submit">Add Item</button>
     </form>
   </div>

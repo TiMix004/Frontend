@@ -15,19 +15,16 @@ export class AppComponent {
   title = 'Frontend';
 
   items: any[] = [];
-  newItem = { name: '', description: '' };
+
+  newUser = { firstname: '', lastname: '', username: '', email: '', password: '', date_of_birth: '' };
 
   constructor(private apiService: ApiService) {}
 
-  addItem() {
+  addUser() {
 
-    const data = {
-      name: this.newItem.name,
-      description: this.newItem.description,
-    };
-
-    this.apiService.createItem(data).subscribe({ 
+    this.apiService.addUser(this.newUser).subscribe({ 
       next: (response: any) => {
+        console.log('Start to insert..');
         console.log(response);
       }
     });

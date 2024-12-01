@@ -5,23 +5,25 @@ from django.shortcuts import render
 from django.http import JsonResponse
 from django.urls import path
 from django.views.decorators.csrf import csrf_exempt
-from .Scripts.DMS import *
+from .Scripts import DMS
 
 @csrf_exempt
-def get_items(request):
-    if request.mthod == 'GET':
-        print(request.method)
-
-@csrf_exempt
-def create_item(request):
+def add_User(request):
     print(request.method)
-    if request.mthod == 'POST':
+    if request.method == 'POST':
         try:
             data = json.loads(request.body)
             print(data)
-            name = data['name']
-            answer = main(name)
-            print (answer)
+
+            first_name = data["firstname"]
+            last_name = data["lastname"]
+            username = data["username"]
+            email = data["email"]
+            password = data["password"]
+            date_of_birth = data["date_of_birth"]
+
+            answer = DMS.add_User(first_name, last_name, username, email, password, date_of_birth)
+            return JsonResponse(answer, safe = False)
 
         except json.JSONDecodeError:
             return JsonResponse({'error': 'Invalid JSON data'}, status = 400)
